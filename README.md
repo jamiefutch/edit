@@ -25,7 +25,18 @@ winget install Microsoft.Edit
 * Install the nightly toolchain: `rustup install nightly`
   * Alternatively, set the environment variable `RUSTC_BOOTSTRAP=1`
 * Clone the repository
-* For a release build, run: `cargo build --config .cargo/release.toml --release`
+* For a release build, run:
+  * Rust 1.90 or earlier: `cargo build --config .cargo/release.toml --release`
+  * otherwise: `cargo build --config .cargo/release-nightly.toml --release`
+
+### Build Configuration
+
+During compilation you can set various environment variables to configure the build. The following table lists the available configuration options:
+
+Environment variable | Description
+--- | ---
+`EDIT_CFG_ICU*` | See [ICU library name (SONAME)](#icu-library-name-soname) for details.
+`EDIT_CFG_LANGUAGES` | A comma-separated list of languages to include in the build. See [i18n/edit.toml](i18n/edit.toml) for available languages.
 
 ## Notes to Package Maintainers
 
